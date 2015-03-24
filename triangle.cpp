@@ -7,9 +7,31 @@
 #include <GL/freeglut.h>
 /* ADD GLOBAL VARIABLES HERE LATER */
 
+/*
+Function: init_resources
+Receives: void
+Returns: int
+This function creates all GLSL related stuff
+explained in this example
+Returns 1, when all is ok, 0 with a displayed error
+*/
+
 int init_resources(void)
 {
-	/* FILLED IN LATER */
+	GLint compile_ok = GL_FALSE, link_ok = GL_FALSE;
+	
+	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
+	const char *vs_source =
+#ifdef GL_ES_VERSION_2_0
+	"#version 100\n" // OpenGL ES 2.0
+#else
+	"#version 120\n" // OpenGL 2.1
+#endif
+	"attribute vec2 coord2d;	"
+	"void main(void) {		"
+	"	gl_Position = vec4(coord2d, 0.0, 1.0);
+	"}";
+	glShaderSource(vs, 1, &vs_source, NULL);
 	return 1;
 }
 
