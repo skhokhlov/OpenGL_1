@@ -1,1 +1,1 @@
-LDLIBS = bla-bla-bla-bla
+LDLIBS = - lGL
