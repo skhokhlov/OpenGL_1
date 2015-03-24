@@ -32,6 +32,23 @@ int init_resources(void)
 	"	gl_Position = vec4(coord2d, 0.0, 1.0);
 	"}";
 	glShaderSource(vs, 1, &vs_source, NULL);
+
+	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
+	const char *fs_source =
+		"#version 120		\n	"
+		"void main(void) {		"
+		"	gl_FragColor[0] = 0.0;	"
+		"	gl_FragColor[1] = 0.0;	"
+		"	gl_FragColor[2] = 2.0;	"
+		"}";
+	glShaderSource(fs, 1, &fs_source, NULL);
+	glCompileShader(fs);
+	glGetShaderiv(fs, GL_COMPILE_STATUS, &compile_ok);
+	if (!compile_ok) {
+		fprintf(stderr, "Errorin fragment shader\n");
+		return 0;
+	}
+
 	return 1;
 }
 
