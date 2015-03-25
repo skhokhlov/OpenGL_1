@@ -8,7 +8,7 @@
 /* ADD GLOBAL VARIABLES HERE LATER */
 
 /*
-Function: init_resources
+Function: initResources
 Receives: void
 Returns: int
 This function creates all GLSL related stuff
@@ -16,7 +16,7 @@ explained in this example
 Returns 1, when all is ok, 0 with a displayed error
 */
 
-int init_resources(void)
+int initResources(void)
 {
 	GLint compile_ok = GL_FALSE, link_ok = GL_FALSE;
 	
@@ -57,7 +57,7 @@ void onDisplay()
 	/* FILLED IN LATER */
 }
 
-void free_resources()
+void freeResources()
 {
 	/* FILLED IN LATER */
 }
@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
 
 	/* When all init functions run without errors
 	   the program can initialise the resources */
-	if (init_resources())
+	if (initResources())
 	{
 		/* We can display it if everything goes OK */
 		glutDisplayFunc(onDisplay);
@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
 
 	/* If the program exits in the usual way, 
 	   free resources and exit with a success */
-	free_resources();
+	freeResources();
 	return EXIT_SUCCESS;
 }
 
